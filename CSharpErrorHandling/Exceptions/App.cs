@@ -21,28 +21,41 @@ public class App
     {
         while (true)
         {
-
-            double Num1, Num2;
-            double Result = 0.00;
-            char op;
-            Console.Write("Enter your First Number :  ");
-            Num1 = double.Parse(Console.ReadLine());
-            Console.Write("Enter an Operator  (+, -, * or /): ");
-            op = char.Parse(Console.ReadLine());
-            if (op != '+' && op != '-' &&
-                op != '*' && op != '/')
-                throw new Exception(op.ToString());
-            Console.Write("Enter your Second Number :");
-            Num2 = double.Parse(Console.ReadLine());
-            if (op == '/')
-                if (Num2 == 0)
-                    throw new DivideByZeroException("Division by zero is not allowed");
-            Result = Calculator(Num1, Num2, op);
-            Console.WriteLine("\n{0} {1} {2} = {3}", Num1, op, Num2, Result);
+            try
+            {
+                int Num1, Num2;
+                double Result = 0;
+                char op;
+                Console.Write("Enter your First Number :  ");
+                Num1 = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter an Operator  (+, -, * or /): ");
+                op = char.Parse(Console.ReadLine());
+                if (op != '-' && op != '+' && op != '*' && op != '/')
+                {
+                    Console.WriteLine("Nope ange +, -, / eller _*" );
+                    continue;
+                }
+                Console.Write("Enter your Second Number :");
+                Num2 = Convert.ToInt32(Console.ReadLine());
+                Result = Calculator(Num1, Num2, op);
+                Console.WriteLine("\n{0} {1} {2} = {3}", Num1, op, Num2, Result);
+            }
+            catch (System.FormatException ex)
+            {
+                Console.WriteLine("Inte ett nummer vad jag förstår");
+            }
+            catch (System.DivideByZeroException ex)
+            {
+                Console.WriteLine("Dela inte med 0");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType());
+            }
         }
     }
 
-    double Calculator(double v1, double v2, char op)
+    double Calculator(int v1, int v2, char op)
     {
         double Result = 0.00;
 
@@ -67,8 +80,8 @@ public class App
 
     public void Run()
     {
-        DivideByZero();
-        calculateDifference();
+        //DivideByZero();
+        //calculateDifference();
 
         Calc();
         try
