@@ -23,7 +23,7 @@ public class App
         }
     }
 
-    public bool calculateDifference()
+    public bool calculateDifference2()
     {
         int difference = 0;
         int[] number = new int[5] { 1, 2, 3, 4, 5 };
