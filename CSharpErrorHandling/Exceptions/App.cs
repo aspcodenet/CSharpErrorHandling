@@ -7,13 +7,37 @@ public class App
 
     public void calculateDifference()
     {
+        try
+        {
+            int difference = 0;
+            int[] number = new int[5] { 1, 2, 3, 4, 5 };
+            for (int init = 1; init <= 5; init++)
+            {
+                difference = difference - number[init];
+            }
+
+        }
+        catch(IndexOutOfRangeException ex )
+        {
+            Console.WriteLine("Utanför index");
+        }
+    }
+
+    public bool calculateDifference()
+    {
         int difference = 0;
         int[] number = new int[5] { 1, 2, 3, 4, 5 };
+        if (number.Length <= 5) return false;
         for (int init = 1; init <= 5; init++)
         {
             difference = difference - number[init];
         }
+
+        return true;
+
     }
+
+
 
 
 
